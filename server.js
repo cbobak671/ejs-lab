@@ -55,16 +55,27 @@ const RESTAURANT = {
 };
 
 app.get("/", (req, res) => {
-  res.render("home.ejs", {RESTAURANT});
+  res.render("home.ejs", { RESTAURANT });
   if (isOpen) {
-    res.render("Yes we are open!")
+    res.render("Yes we are open!");
   } else {
     res.render("Sorry, we are closed.");
   }
 });
 
 app.get("/menu", (req, res) => {
-res.render("menu.ejs");
-})
+  res.render("menu.ejs", { menu: RESTAURANT.menu });
+});
+
+app.get("/:category", (req, res) => {
+  const category = req.params.category;
+  const filteredMenu = RESTAURANT.menu.filter(
+    (item) => item.category === category
+  );
+  res.render("category.ejs", {
+    category: categoryName,
+    menuItems: filteredMenu,
+  });
+});
 
 app.listen(3000);
