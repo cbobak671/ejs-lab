@@ -7,16 +7,16 @@
   </head>
   <body>
     <%- include('./partials/nav') %>
-    <h1>Full Menu</h1>
+    <h1><%= category %> Menu</h1>
     <ul>
-        <% filteredMenu.forEach(item => { %>
-        <li>
-          <h3><%= item.name %></h3>
-          <p>Price: $<%= item.price %></p>
-          <p>Rating: <%= item.rating %></p>
-          <p>Details: <%= item.details %></p>
-        </li>
-        <% }); %>
-      </ul>
+      <% menuItems.forEach(item => { %>
+      <li>
+        <h3><%= item.name %></h3>
+        <p>Price: $<%= item.price %></p>
+        <p>Rating: <%= item.rating %></p>
+        <p>Details: <%= item.details %></p>
+      </li>
+      <% }); %>
+    </ul>
   </body>
 </html>

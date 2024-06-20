@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+
+
 const RESTAURANT = {
   name: "The Green Byte Bistro",
   isOpen: true,
@@ -67,15 +69,16 @@ app.get("/menu", (req, res) => {
   res.render("menu.ejs", { menu: RESTAURANT.menu });
 });
 
-app.get("/:category", (req, res) => {
+app.get("/menu/:category", (req, res) => {
   const category = req.params.category;
-  const filteredMenu = RESTAURANT.menu.filter(
+  const filteredMenuItems = RESTAURANT.menu.filter(
     (item) => item.category === category
   );
-  res.render("category.ejs", {
-    category: categoryName,
-    menuItems: filteredMenu,
+  res.render("category", {
+    menuItems: filteredMenuItems,
+    category: category,
   });
 });
 
 app.listen(3000);
+console.log("listening on port 3000");
