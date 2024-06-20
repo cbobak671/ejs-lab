@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 
-
 const RESTAURANT = {
   name: "The Green Byte Bistro",
   isOpen: true,
@@ -74,7 +73,7 @@ app.get("/menu/:category", (req, res) => {
   const filteredMenuItems = RESTAURANT.menu.filter(
     (item) => item.category === category
   );
-  res.render("category", {
+  res.render("category.ejs", {
     menuItems: filteredMenuItems,
     category: category,
   });
